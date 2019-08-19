@@ -1,58 +1,54 @@
 <!DOCTYPE html>
 <html>
 <body>
-
-<p>Click on the w3schools logo to download the image:<p>
-
-<a href="http://bdigital.unal.edu.co/9235/13/9060268._2010_Parte5.pdf" download="a.pdf">
-  <img src="https://www.w3schools.com/images/myw3schoolsimage.jpg" alt="W3Schools" width="104" height="142">
-</a>
-
-<p><b>Note:</b> The download attribute is not supported in Edge version 12, IE, Safari 10 (and earlier), or Opera version 12 (and earlier).</p>
-
-</body>
-</html>
-
-
-<!--<!DOCTYPE html>
-<html>
-<head>
-    <title>Reloj</title>
-</head>
-<body>
     <style type="text/css" media="all">
     
     .demo{
-        font-size: 20px;
+        font-size: 170px;
+        position:absolute;
         margin:0px;
-        border:4px solid cyan;
-        display: inline-block;
-        margin: 15px;
-        padding: 10px;
-        color: black;
-        border-radius: 50px;
+        border:10px solid black;
     }
-    .demo:hover{
-        font-size: 20px;
-        margin:0px;
-        border:4px solid cyan;
-        display: inline-block;
-        color:black;
-        margin: 15px;
-        padding: 10px;
-        border-radius: 50px;
-        cursor: pointer;
+    .date{
+        font-size: 50px;
+        position:absolute;
+        border:10px solid black;
+        top:250px;
+        transform:;
     }
-    .des{
-        text-decoration: none;
-        color: black;
-        font-size: 15px;
-        position: relative;
+    .dv{
+        width:10px;
+        height: 100px;
+        background: black;
+        position:absolute;
+        top:100px;
+        left:600px;
+        border-radius:100%;
+        border-top:200px solid green;
+        animation-duration: 60s;
+        animation-name: rot;
+        display: none;
+        
     }
+    @keyframes rot {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.det{
+    position:absolute;
+    top:500px;
+}
+        
     </style>
 
 <p id="demo" class="demo"></p>
-<a href="/reloj/index.html" class="des" download="reloj.html">Aqui</a>
+<p id="date" class="date"></p>
+<div id="dv" class="dv"></div>
+<input type="button" name="" id="det"  value="detener" class="det" />
 
 <script>
     function time() {
@@ -83,16 +79,44 @@
             horav=hora;
         } 
         var millisec = milli/100;
-
+        var msec = milli/1000*250;
+        var colored = sec/60*250;
+        //alert(msec);
+        
         document.getElementById("demo").innerHTML =horav +":"+miv+":" + sev +":"+ Math.floor(millisec);
+        document.getElementById("demo").style.color="rgb("+msec+", "+colored+","+msec+")";
+        //document.getElementById("milli").innerHTML = Math.floor(r);
     }
-    
-    
+    function fechadma(){
+        var fecha = new Date();
+        var dia = fecha.getDay()-1; //dia
+        var dia30 = fecha.getDate(); //dia del mes
+        var mes = fecha.getMonth()+1; //mes
+        var year = fecha.getFullYear();
+        
+        
+        var meses = ["Enero", "Febrero", "Marzo", "abril", "mayo", "junio", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
+        var dias = ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"]; //arreglos de dias de semana
+        document.getElementById("date").innerHTML = dias[dia]+", "+dia30+" de "+ meses[mes] + " de " +year;
+        
+    }
+    function fechain(){
+        var fecha = new Date();
+        var dia = fecha.getDay()-1; //dia
+        var dia30 = fecha.getDate(); //dia del mes
+        var mes = fecha.getMonth()+1; //mes
+        var year = fecha.getFullYear();
+        
+        var month = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+        var days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday','Sunday'];
+        document.getElementById("date").innerHTML = days[dia]+ ", "+month[mes]+" "+dia30+", "+year;
+    }
     time();
     setInterval(time, 50);
-
+    fechadma();
+    setInterval(fechadma, 1000);
+    
 </script>
 
 </body>
 </html>
--->
