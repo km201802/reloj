@@ -1,122 +1,16 @@
 <!DOCTYPE html>
 <html>
+<head>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+</head>
 <body>
-    <style type="text/css" media="all">
-    
-    .demo{
-        font-size: 170px;
-        position:absolute;
-        margin:0px;
-        border:10px solid black;
-    }
-    .date{
-        font-size: 50px;
-        position:absolute;
-        border:10px solid black;
-        top:250px;
-        transform:;
-    }
-    .dv{
-        width:10px;
-        height: 100px;
-        background: black;
-        position:absolute;
-        top:100px;
-        left:600px;
-        border-radius:100%;
-        border-top:200px solid green;
-        animation-duration: 60s;
-        animation-name: rot;
-        display: none;
-        
-    }
-    @keyframes rot {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-.det{
-    position:absolute;
-    top:500px;
-}
-        
-    </style>
 
-<p id="demo" class="demo"></p>
-<p id="date" class="date"></p>
-<div id="dv" class="dv"></div>
-<input type="button" name="" id="det"  value="detener" class="det" />
+    <p id="demo" class="demo"></p>
+    <p id="date" class="date"></p>
+    <div id="dv" class="dv"></div>
+    <input type="button" id="det" value="detener" class="det" />
 
-<script>
-    function time() {
-        var fecha = new Date();
-        var milli = fecha.getMilliseconds();
-        var sec = fecha.getSeconds(); //obtemos los segundos
-        var sev; //variable para la condicion 00
-        if(sec<10){
-            sev = "0"+sec;// agregamos un 0 cuando var<10
-        }else{
-            sev=sec; //si no lo es dejamos el mismo valor
-        } //para agregar un 0 cuando es menor que 10 ejem:9 a 09
-        var min = fecha.getMinutes(); //obtenemos los minutos
-        var miv;
-        if(min<10){
-            miv = "0"+min;
-        }else{
-            miv=min;
-        } 
-        var hora = fecha.getHours();
-        var horav;
-        if(hora>12){
-            hora=hora-12;
-        }
-        if(hora<10){
-            horav = "0"+hora;
-        }else{
-            horav=hora;
-        } 
-        var millisec = milli/100;
-        var msec = milli/1000*250;
-        var colored = sec/60*250;
-        //alert(msec);
-        
-        document.getElementById("demo").innerHTML =horav +":"+miv+":" + sev +":"+ Math.floor(millisec);
-        document.getElementById("demo").style.color="rgb("+msec+", "+colored+","+msec+")";
-        //document.getElementById("milli").innerHTML = Math.floor(r);
-    }
-    function fechadma(){
-        var fecha = new Date();
-        var dia = fecha.getDay()-1; //dia
-        var dia30 = fecha.getDate(); //dia del mes
-        var mes = fecha.getMonth()+1; //mes
-        var year = fecha.getFullYear();
-        
-        
-        var meses = ["Enero", "Febrero", "Marzo", "abril", "mayo", "junio", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
-        var dias = ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"]; //arreglos de dias de semana
-        document.getElementById("date").innerHTML = dias[dia]+", "+dia30+" de "+ meses[mes] + " de " +year;
-        
-    }
-    function fechain(){
-        var fecha = new Date();
-        var dia = fecha.getDay()-1; //dia
-        var dia30 = fecha.getDate(); //dia del mes
-        var mes = fecha.getMonth()+1; //mes
-        var year = fecha.getFullYear();
-        
-        var month = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-        var days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday','Sunday'];
-        document.getElementById("date").innerHTML = days[dia]+ ", "+month[mes]+" "+dia30+", "+year;
-    }
-    time();
-    setInterval(time, 50);
-    fechadma();
-    setInterval(fechadma, 1000);
-    
-</script>
-
+    <script src="js/clock.js"></script>
 </body>
+
 </html>
