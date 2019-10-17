@@ -7,7 +7,7 @@ function time() {
     if(millis<10){millis = "0"+millis;}
     if(seconds<10){seconds = "0"+seconds;}
     if(minutes<10){minutes = "0"+minutes;}
-    document.getElementById("demo").innerHTML = hours + ":" + minutes + ":" + seconds + ":" + millis;
+    document.getElementById("tm").innerHTML = hours + ":" + minutes + ":" + seconds + ":" + millis;
 }
 
 function Dt() {
@@ -25,6 +25,7 @@ function Dt() {
     document.getElementById("date").innerHTML = names.days[day]+", "+names.months[month]+" "+monthDay+", "+years;
     //document.getElementById("date").innerHTML = names.dias[day] + ", " + monthDay + " de " + names.meses[month] + " de " + years;
 }
+
 
 time();
 setInterval(time, 50);
